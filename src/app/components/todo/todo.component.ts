@@ -1,4 +1,5 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { isNgTemplate } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder,Validators} from '@angular/forms'
 import { Itask } from 'src/app/model/task';
@@ -20,12 +21,14 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoForm = this.fb.group({
-      item :['', Validators.required]
+      item :['', Validators.required],
+      itemDescription: ['', Validators.required]
     })
   }
   addTask(){
     this.tasks.push({
-      description:this.todoForm.value.item,
+      title: this.todoForm.value.item,
+      description:this.todoForm.value.itemDescription,
       done:false
     });
     this.todoForm.reset();
