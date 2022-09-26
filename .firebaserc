@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "my-first-todo-poject": {
+      "hosting": {
+        "todolist1": [
+          "my-first-todo-poject"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "my-first-todo-poject"
+  }
+}
