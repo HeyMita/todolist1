@@ -20,6 +20,7 @@
   }
   
   .example-box {
+    overflow: auto;
     padding: 20px 10px;
     border-bottom: solid 1px #ccc;
     color: rgba(0, 0, 0, 0.87);
