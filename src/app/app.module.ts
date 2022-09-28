@@ -18,16 +18,20 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-
-
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import {TasksService} from './providers/tasks.service';
+import { LoginComponent } from './components/login/login.component'
+import { USE_DEVICE_LANGUAGE } from '@angular/fire/compat/auth';
+import { SETTINGS as AUTH_SETTINGS } from '@angular/fire/compat/auth';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    TodoComponent
+    TodoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -41,11 +45,17 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     MatInputModule,
     MatButtonModule,
     DragDropModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
   ],
-  providers: [],
+  providers: [
+    TasksService,
+    { provide: USE_DEVICE_LANGUAGE, useValue: true },
+    { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

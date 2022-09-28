@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
 import { TodoComponent } from './components/todo/todo.component';
 
 const routes: Routes = [
   {
     path:'',
-    component:TodoComponent
+    component: LoginComponent
   }
 ];
 
